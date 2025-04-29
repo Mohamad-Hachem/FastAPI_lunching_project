@@ -16,7 +16,13 @@ async def get_book_by_book_title(title: str):
     for book in BOOKS:
         if book["title"] == title:
             return book
-
+@app.get("/books/author/{author}")
+async def get_book_by_author(author: str):
+    final_books = []
+    for book in BOOKS:
+        if book["author"] == author:
+            final_books.append(book)
+    return final_books
 @app.get("/books/")
 async def get_books_query_by_category(category: str):
     final_books = []
